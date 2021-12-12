@@ -7,3 +7,23 @@ import seaborn as sns
 
 df = pd.read_csv("final_cars_datasets.csv" )
 del df['Unnamed: 0']
+
+df
+
+print('Information about prices of the cars:', "\n")
+print(' 1.The mean value of the car price is' , round(df['price'].mean(), 2), 'hundreds of dollars','\n','2.The median value of the car price is', round(df['price'].median(), 2), 'hundreds of dollars','\n','3.The value of the standard deviation from the average car price is',round(df['price'].std(), 2), 'hundreds of dollars')
+
+sns.set_style("darkgrid")
+ax= sns.violinplot(y=df['price'],inner= 'quartile', palette="flare", as_cmap=True)
+
+
+
+print('Information about miles traveled by vehicles:', "\n")
+print(' 1.Average mileage of cars is', round(df['mileage'].mean(),2),'\n','2.The median value of mileage among cars is',round(df['mileage'].median(), 2),'\n','3.The value of the standard deviation from the average car mileage is',round(df['mileage'].std(), 2))
+
+box= plt.boxplot(df['mileage'], patch_artist=True, sym='.')
+plt.style.use('classic')
+plt.ylabel('Miles')
+plt.title('Mileage')
+plt.setp(box["boxes"], facecolor='pink')
+plt.show()
